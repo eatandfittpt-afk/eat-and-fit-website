@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Eat&Fit Tirupati</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header styling */
+        header {
+            background-color: #2e7d32;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            height: 100px;
+        }
+
+        /* Image box */
+        .image-box {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .image-box img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .image-box img.active {
+            opacity: 1;
+        }
+
+        /* Overlay */
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            padding: 20px;
+            z-index: 2;
+        }
+
+        .overlay h1 {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .overlay p {
+            font-size: 18px;
+            max-width: 700px;
+            margin-bottom: 25px;
+        }
+
+        .overlay button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            font-size: 16px;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+/* Why Choose Section */
+.why-choose {
+    padding: 60px 20px;
+    background-color: #f8fdf8;
+    text-align: center;
+}
+
+.why-choose h2 {
+    font-size: 36px;
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+.why-subtitle {
+    max-width: 700px;
+    margin: 0 auto 40px;
+    font-size: 18px;
+    color: #555;
+}
+
+.choose-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.choose-box {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.choose-box:hover {
+    transform: translateY(-8px);
+}
+
+.choose-box img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+}
+
+.choose-box h3 {
+    font-size: 22px;
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+.choose-box p {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+}
+
+@media (max-width: 992px) {
+    .plans-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .plans-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Subscription Plans */
+.plans {
+    padding: 70px 20px;
+    background-color: #f8fdf8;
+    text-align: center;
+}
+
+.plans h2 {
+    font-size: 36px;
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+.plans-subtitle {
+    max-width: 700px;
+    margin: 0 auto 50px;
+    font-size: 18px;
+    color: #555;
+}
+
+.plans-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 plans in one row */
+    gap: 25px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+
+
+.plan-box {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 30px 20px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.plan-box h3 {
+    color: #2e7d32;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.plan-box ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+}
+
+.plan-box ul li {
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.plan-box button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.plan-box button:hover {
+    background-color: #43a047;
+}
+
+.popular {
+    border: 3px solid #4caf50;
+}
+
+.badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4caf50;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+/* Breakfast Includes Section */
+.breakfast-includes {
+    padding: 70px 20px;
+    background-color: #f8fdf8;
+    text-align: center;
+    overflow: hidden;
+}
+
+.breakfast-includes h2 {
+    font-size: 36px;
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+.includes-subtitle {
+    max-width: 750px;
+    margin: 0 auto 40px;
+    font-size: 18px;
+    color: #555;
+}
+
+/* Scroll Area */
+.scroll-wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+
+.scroll-track {
+    display: flex;
+    gap: 25px;
+    animation: scrollLeft 35s linear infinite;
+}
+
+/* Card */
+.food-card {
+    min-width: 260px;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 15px;
+    box-shadow: 0 12px 25px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.food-card:hover {
+    transform: translateY(-8px);
+}
+
+.food-card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 14px;
+    margin-bottom: 12px;
+}
+
+.food-card h4 {
+    color: #2e7d32;
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.food-card p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Animation */
+@keyframes scrollLeft {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* Pause on hover */
+.scroll-wrapper:hover .scroll-track {
+    animation-play-state: paused;
+}
+
+
+/* ===== HEADER ===== */
+.simple-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background: linear-gradient(90deg, #0f3d1e, #1b5e20, #2e7d32);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    animation: slideDown 0.8s ease;
+}
+
+/* Container */
+.header-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 12px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ===== BRAND ===== */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    cursor: pointer;
+}
+
+/* BIG POWER LOGO */
+.brand img {
+    height: 90px;                 /* BIGGER */
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.6));
+    animation: logoGlow 2s infinite alternate;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* BRAND TEXT – BOLD MAN STYLE */
+.brand span {
+    font-size: 34px;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+    text-shadow: 0 0 12px rgba(255,255,255,0.4);
+}
+
+/* HOVER EFFECT */
+.brand:hover img {
+    transform: scale(1.15) rotate(-2deg);
+    filter: drop-shadow(0 0 20px rgba(255,255,255,0.9));
+}
+
+/* LOGO GLOW ANIMATION */
+@keyframes logoGlow {
+    from {
+        filter: drop-shadow(0 0 6px rgba(255,255,255,0.4));
+    }
+    to {
+        filter: drop-shadow(0 0 18px rgba(255,255,255,0.9));
+    }
+}
+
+/* ===== SUBSCRIBE BUTTON ===== */
+.subscribe-btn {
+    margin-right: 25px; /* Move left */
+    padding: 12px 30px;
+    background: #ffeb3b;
+    color: #1b5e20;
+    font-weight: 700;
+    font-size: 16px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.35s ease;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+/* Button Hover */
+.subscribe-btn:hover {
+    background: #fff176;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* ===== ANIMATION ===== */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .brand img {
+        height: 55px;
+    }
+
+    .brand span {
+        font-size: 22px;
+    }
+
+    .subscribe-btn {
+        padding: 10px 22px;
+        font-size: 14px;
+        margin-right: 10px;
+    }
+}
+
+
+/* FULL WIDTH CONTAINER */
+.header-container {
+    width: 100%;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* KEY LINE */
+}
+
+/* Left Brand */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.brand img {
+    height: 75px;
+}
+
+.brand span {
+    color: #ffffff;
+    font-size: 35px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* Right Subscribe Button */
+.subscribe-btn {
+    background: #ffffff;
+    color: #1b5e20;
+    padding: 10px 26px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.subscribe-btn:hover {
+    background: #c8facc;
+    transform: scale(1.05);
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Subscription Plans */
+.features {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+}
+
+.features li {
+    font-size: 15px;
+    color: #444;
+    margin-bottom: 8px;
+}
+
+.plans {
+    padding: 70px 20px;
+    background-color: #f8fdf8;
+    text-align: center;
+}
+
+.plans h2 {
+    font-size: 36px;
+    color: #2e7d32;
+    margin-bottom: 10px;
+}
+
+.plans-subtitle {
+    max-width: 700px;
+    margin: 0 auto 50px;
+    font-size: 18px;
+    color: #555;
+}
+
+.plans-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 plans in one row */
+    gap: 25px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+
+.plan-box {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 30px 20px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+.plan-box h3 {
+    color: #2e7d32;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.plan-box ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 25px;
+}
+
+.plan-box ul li {
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.plan-box button {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.plan-box button:hover {
+    background-color: #43a047;
+}
+
+.popular {
+    border: 3px solid #4caf50;
+}
+
+.badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4caf50;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+
+
+/* QR Modal Background */
+.qr-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+/* QR Modal Box */
+.qr-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    width: 300px;
+    animation: zoomIn 0.3s ease;
+}
+
+/* QR Image */
+.qr-content img {
+    width: 200px;
+    margin: 15px 0;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Animation */
+@keyframes zoomIn {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.footer {
+    position: relative;
+    background: linear-gradient(180deg, #0f3d1e, #0a2814);
+    color: #ffffff;
+    padding-top: 90px;
+    overflow: hidden;
+}
+
+/* Curve */
+.footer-shape {
+    position: absolute;
+    top: -50px;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: radial-gradient(circle at center, #2e7d32, transparent 70%);
+    opacity: 0.45;
+}
+
+/* Layout */
+.footer-content {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 30px 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 45px;
+}
+
+/* Headings */
+.footer-section h3 {
+    font-size: 20px;
+    margin-bottom: 14px;
+    position: relative;
+}
+
+.footer-section h3::after {
+    content: "";
+    width: 36px;
+    height: 3px;
+    background: #ffeb3b;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    border-radius: 10px;
+}
+
+/* Brand */
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+}
+
+.footer-logo {
+    height: 85px;
+    filter: drop-shadow(0 0 12px rgba(255,255,255,0.7));
+    animation: subtlePulse 3s infinite;
+}
+
+.footer-section.about h3 {
+    font-size: 26px;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+}
+
+.footer-section.about p {
+    font-size: 14px;
+    opacity: 0.9;
+    line-height: 1.7;
+}
+
+/* Logo Animation */
+@keyframes subtlePulse {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+}
+
+/* Links */
+.footer-section.links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section.links li {
+    margin-bottom: 9px;
+}
+
+.footer-section.links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    opacity: 0.85;
+    transition: all 0.3s ease;
+}
+
+.footer-section.links a:hover {
+    color: #ffeb3b;
+    padding-left: 6px;
+}
+
+/* Contact */
+.footer-section.contact p {
+    font-size: 14px;
+    margin-bottom: 9px;
+    opacity: 0.9;
+}
+
+/* Social Icons */
+.social-icons {
+    display: flex;
+    gap: 12px;
+}
+
+.social-icons a {
+    width: 42px;
+    height: 42px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.social-icons img {
+    width: 20px;
+}
+
+.social-icons a:hover {
+    background: #ffeb3b;
+    transform: translateY(-4px);
+}
+
+/* Bottom */
+.footer-bottom {
+    text-align: center;
+    padding: 16px;
+    font-size: 13px;
+    background: rgba(0,0,0,0.25);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .footer-logo {
+        height: 70px;
+    }
+
+    .footer-section.about h3 {
+        font-size: 22px;
+    }
+}
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+<header class="simple-header">
+    <div class="header-container">
+
+        <!-- Brand -->
+        <div class="brand">
+            <img src="logo02.png" alt="Eat & Fit Logo">
+            <span>Eat & Fit</span>
+        </div>
+
+        <!-- Subscribe Button -->
+<a href="javascript:void(0)" class="subscribe-btn" onclick="openQR()">Subscribe</a>
+
+    </div>
+</header>
+
+
+
+
+<!-- Image Slider -->
+<div class="image-box">
+    <img src="MAIN_COVER_PHOTO_1.avif" class="active">
+    <img src="MAIN_COVER_PHOTO_2.avif">
+    <img src="MAIN_COVER_PHOTO_3.avif">
+
+    <div class="overlay">
+        <h1>Fresh Food. Healthy Life.</h1>
+        <p>
+            Enjoy delicious, nutritious meals delivered fresh to your doorstep.
+            Perfectly balanced, home-style food for a healthier you.
+        </p>
+<button onclick="openQR()">Get Started</button>
+    </div>
+</div>
+
+<!-- Why Choose Eat & Fit -->
+<section class="why-choose">
+    <h2>Why Choose Eat & Fit</h2>
+    <p class="why-subtitle">
+        We believe healthy eating should be simple, delicious, and affordable.
+        That’s why Eat & Fit is designed to support your lifestyle every day.
+    </p>
+
+    <div class="choose-container">
+        <!-- Box 1 -->
+        <div class="choose-box">
+            <img src="fresh_& hygienic_ingredients_01.jpg" alt="Fresh Ingredients">
+            <h3>Fresh & Hygienic Ingredients</h3>
+            <p>
+                We use farm-fresh vegetables, quality grains, and premium ingredients.
+                Every meal is prepared in a clean and hygienic kitchen to ensure your safety.
+            </p>
+        </div>
+
+        <!-- Box 2 -->
+        <div class="choose-box">
+            <img src="perfectly_balanced_mealss_image_02.avif" alt="Balanced Meals">
+            <h3>Perfectly Balanced Meals</h3>
+            <p>
+                Our meals are carefully planned to provide the right balance of proteins,
+                carbs, and nutrients to keep you energetic throughout the day.
+            </p>
+        </div>
+
+        <!-- Box 3 -->
+        <div class="choose-box">
+            <img src="reliable_daily _delivery_image_03.jpg" alt="Doorstep Delivery">
+            <h3>Reliable Daily Delivery</h3>
+            <p>
+                Enjoy timely doorstep delivery of breakfast, lunch, and dinner.
+                No cooking, no stress — just healthy food delivered to you daily.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Subscription Plans -->
+<section class="plans">
+    <h2>Subscription Plans</h2>
+    <p class="plans-subtitle">
+        Choose a plan that fits your lifestyle and enjoy healthy meals while we take complete care of your health.
+    </p>
+
+    <div class="plans-container">
+
+        <!-- 6 Months Plan -->
+        <div class="plan-box">
+            <h3>6 Months Plan</h3>
+            <p class="price">₹24,138</p>
+            <ul class="features">
+                <li>✔ Fresh Sprouts</li>
+                <li>✔ Hand-Picked Dry Fruits & Nuts</li>
+                <li>✔ Farm-Fresh Eggs</li>
+                <li>✔ Lean Protein Chicken</li>
+                <li>✔ Soft Dry Chapathi</li>
+                <li>✔ Steamed Seasonal Vegetables</li>
+                <li>✔ Fresh Fruit Salads</li>
+                <li>✔ Healthy Natural Juices</li>
+            </ul>
+<button onclick="openQR()">Subscribe Now</button>
+        </div>
+
+        <!-- 3 Months Plan -->
+        <div class="plan-box popular">
+            <span class="badge">Most Popular</span>
+            <h3>3 Months Plan</h3>
+            <p class="price">₹12,879</p>
+            <ul class="features">
+                <li>✔ Fresh Sprouts</li>
+                <li>✔ Hand-Picked Dry Fruits & Nuts</li>
+                <li>✔ Farm-Fresh Eggs</li>
+                <li>✔ Lean Protein Chicken</li>
+                <li>✔ Soft Dry Chapathi</li>
+                <li>✔ Steamed Seasonal Vegetables</li>
+                <li>✔ Fresh Fruit Salads</li>
+                <li>✔ Healthy Natural Juices</li>
+            </ul>
+<button onclick="openQR()">Subscribe Now</button>
+        </div>
+
+        <!-- Monthly Plan -->
+        <div class="plan-box">
+            <h3>Monthly Plan</h3>
+            <p class="price">₹4,563</p>
+            <ul class="features">
+                <li>✔ Fresh Sprouts</li>
+                <li>✔ Hand-Picked Dry Fruits & Nuts</li>
+                <li>✔ Farm-Fresh Eggs</li>
+                <li>✔ Lean Protein Chicken</li>
+                <li>✔ Soft Dry Chapathi</li>
+                <li>✔ Steamed Seasonal Vegetables</li>
+                <li>✔ Fresh Fruit Salads</li>
+                <li>✔ Healthy Natural Juices</li>
+            </ul>
+<button onclick="openQR()">Subscribe Now</button>
+        </div>
+
+        <!-- Day Plan -->
+        <div class="plan-box">
+            <h3>Day Plan</h3>
+            <p class="price">₹179</p>
+            <ul class="features">
+                <li>✔ Fresh Sprouts</li>
+                <li>✔ Hand-Picked Dry Fruits & Nuts</li>
+                <li>✔ Farm-Fresh Eggs</li>
+                <li>✔ Lean Protein Chicken</li>
+                <li>✔ Soft Dry Chapathi</li>
+                <li>✔ Steamed Seasonal Vegetables</li>
+                <li>✔ Fresh Fruit Salads</li>
+                <li>✔ Healthy Natural Juices</li>
+            </ul>
+<button onclick="openQR()">Subscribe Now</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- Breakfast Includes -->
+<section class="breakfast-includes">
+    <h2>What’s Included in Our Breakfast</h2>
+    <p class="includes-subtitle">
+        A thoughtfully curated combination of fresh, protein-rich, and
+        nutrient-dense foods — prepared to energize your mornings naturally.
+    </p>
+
+
+
+    <div class="scroll-wrapper">
+        <div class="scroll-track">
+
+            <!-- Item 1 -->
+            <div class="food-card">
+                <img src="sprouts.jpg" alt="Fresh Sprouts">
+                <h4>Fresh Sprouts</h4>
+                <p>Rich in fiber, vitamins, and antioxidants to support digestion and immunity.</p>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="food-card">
+                <img src="dry_fruits.jpg" alt="Dry Fruits">
+                <h4>Handpicked Dry Fruits</h4>
+                <p>A natural source of healthy fats and minerals for sustained energy.</p>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="food-card">
+                <img src="boiled_eggs.jpg" alt="Eggs">
+                <h4>Eggs</h4>
+                <p>High-quality protein to support muscle strength and daily performance.</p>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="food-card">
+                <img src="boiled_chicken.jpg" alt="Chicken">
+                <h4>Lean Chicken</h4>
+                <p>Protein-rich and low-fat option to keep you full and energized.</p>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="food-card">
+                <img src="dry_chepathi.jpg" alt="Dry Chapathi">
+                <h4>Dry Chapathi</h4>
+                <p>Wholesome carbohydrates for balanced energy release.</p>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="food-card">
+                <img src="streamed-vezetable.jpg" alt="Steamed Vegetables">
+                <h4>Steamed Vegetables</h4>
+                <p>Carefully selected vegetables steamed to retain nutrients.</p>
+            </div>
+
+            <!-- Item 7 -->
+            <div class="food-card">
+                <img src="fruit salaad.jpg" alt="Fruit Salad">
+                <h4>Fresh Fruit Salad</h4>
+                <p>Seasonal fruits packed with vitamins and natural sweetness.</p>
+            </div>
+
+            <!-- Item 8 -->
+            <div class="food-card">
+                <img src="pomogranate_juice.jpg" alt="Healthy Juice">
+                <h4>Healthy Juice</h4>
+                <p>Freshly prepared juice for hydration and natural detox.</p>
+            </div>
+
+            <!-- DUPLICATE SET FOR SMOOTH LOOP -->
+            <!-- (copy same items again) -->
+
+        </div>
+    </div>
+</section>
+
+
+
+
+<div id="qrModal" class="qr-modal">
+    <div class="qr-content">
+        <span class="close-btn" onclick="closeQR()">&times;</span>
+        <h3>Scan to Subscribe</h3>
+        <img src="rajasekhar_qr.png" alt="QR Code">
+        <p>Scan this QR code to complete your subscription</p>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+
+    <div class="footer-shape"></div>
+
+    <div class="footer-content">
+
+        <!-- About Section -->
+        <div class="footer-section about">
+            <div class="footer-brand">
+                <img src="logo02.png" alt="Eat & Fit Logo" class="footer-logo" />
+                <h3>Eat & Fit</h3>
+            </div>
+            <p>
+                Enjoy healthy and nutritious meals delivered to your doorstep.
+                Choose a plan that fits your lifestyle and stay healthy effortlessly.
+            </p>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-section contact">
+            <h3>Contact</h3>
+            <p>📍 6-8-1252 First Floor, Patta Complex, AnnaRao Circle, KT Rd, N G O Colony, Tirupati, Andhra Pradesh 517507</p>
+            <p>📞 +91 90148 63642</p>
+            <p>✉️ eatandfittpt@gmail.com</p>
+        </div>
+
+        <!-- Social -->
+        <div class="footer-section social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+    <a href="https://www.facebook.com/profile.php?id=61582642402412" target="_blank" aria-label="YouTube">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png"/>
+    </a>
+
+
+
+    <a href="https://www.youtube.com/@eatfit-x8c" target="_blank" aria-label="YouTube">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png"/>
+    </a>
+</div>
+
+        </div>
+
+    </div>
+
+    <p class="footer-bottom">© 2025 Eat & Fit. All rights reserved.</p>
+
+</footer>
+
+
+
+
+
+<script>
+    let images = document.querySelectorAll(".image-box img");
+    let index = 0;
+
+    setInterval(() => {
+        images[index].classList.remove("active");
+        index = (index + 1) % images.length;
+        images[index].classList.add("active");
+    }, 3000); // change image every 3 seconds
+
+
+
+
+function openQR() {
+    document.getElementById("qrModal").style.display = "flex";
+}
+
+function closeQR() {
+    document.getElementById("qrModal").style.display = "none";
+}
+
+/* Close modal when clicking outside */
+window.onclick = function(event) {
+    const modal = document.getElementById("qrModal");
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+
+</body>
+</html>
